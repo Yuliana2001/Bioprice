@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.nav-link {
+  border-radius: 0.5rem;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+  outline-offset: 4px;
+  padding: 0.5rem 0.125rem;
+  transition: color 160ms ease;
+}
+
+.nav-link:hover,
+.nav-link-active {
+  color: #1d4ed8;
+}
+
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible {
+  outline: 2px solid #2563eb;
+}
+
+.mobile-nav-link {
+  border-radius: 0.75rem;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.8rem 0.75rem;
+}
+
+.mobile-nav-link:hover {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none;
+  }
+}

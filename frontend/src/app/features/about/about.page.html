@@ -1,0 +1,179 @@
+<app-site-header />
+
+<main id="contenido">
+  <section class="about-hero">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+      <p class="section-eyebrow">El proyecto</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-[#0B1736] sm:text-5xl">
+        Quiénes somos
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+        BioPrice BI es una plataforma para analizar, con transparencia, información
+        histórica sobre importaciones de equipos biomédicos en Colombia.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto grid max-w-7xl gap-5 px-5 sm:px-8 md:grid-cols-3 lg:px-10">
+      <article class="purpose-card">
+        <span class="purpose-icon">
+          <svg lucideTarget class="h-5 w-5" aria-hidden="true"></svg>
+        </span>
+        <h2>Objetivos</h2>
+        <ul>
+          <li>Organizar información sobre importaciones de equipos biomédicos.</li>
+          <li>Explorar precios unitarios, variaciones históricas y países de origen.</li>
+          <li>Describir actores importadores y mostrar límites de interpretación.</li>
+        </ul>
+      </article>
+
+      <article class="purpose-card">
+        <span class="purpose-icon">
+          <svg lucideHeartPulse class="h-5 w-5" aria-hidden="true"></svg>
+        </span>
+        <h2>Misión</h2>
+        <p>
+          Facilitar el análisis responsable de información de precios de equipos biomédicos
+          mediante indicadores comprensibles, criterios trazables y advertencias explícitas.
+        </p>
+      </article>
+
+      <article class="purpose-card">
+        <span class="purpose-icon">
+          <svg lucideEye class="h-5 w-5" aria-hidden="true"></svg>
+        </span>
+        <h2>Visión</h2>
+        <p>
+          Ser una herramienta de inteligencia de negocios útil para consultar evidencia histórica y apoyar
+          conversaciones informadas sobre el mercado de tecnologías biomédicas en Colombia.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="bg-[#f4f7fb] py-16 sm:py-20">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-10">
+      <div>
+        <p class="section-eyebrow">Relevancia</p>
+        <h2 class="mt-4 text-3xl font-semibold tracking-tight text-[#0B1736] sm:text-4xl">
+          ¿Por qué analizar los precios?
+        </h2>
+        <p class="mt-5 leading-7 text-slate-600">
+          Los registros de importación reúnen operaciones con descripciones, cantidades y contextos
+          distintos. Una lectura ordenada ayuda a observar patrones y diferencias sin asumir que
+          cada registro es directamente comparable.
+        </p>
+        <p class="mt-4 leading-7 text-slate-600">
+          BioPrice BI busca aportar contexto: separa equipos principales de accesorios cuando la
+          evidencia lo permite, conserva observaciones y presenta la incertidumbre como parte del
+          análisis.
+        </p>
+        <a
+          class="mt-7 inline-flex items-center gap-2 rounded-lg font-semibold text-blue-700 hover:text-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+          routerLink="/"
+          fragment="metodologia"
+        >
+          Revisar metodología
+          <svg lucideArrowRight class="h-4 w-4" aria-hidden="true"></svg>
+        </a>
+      </div>
+
+      <aside class="rounded-3xl bg-[#0B1736] p-7 text-white sm:p-9">
+        <p class="text-xs font-bold uppercase tracking-[0.17em] text-[#52d7ca]">
+          Principio del proyecto
+        </p>
+        <blockquote class="mt-5 text-2xl font-medium leading-relaxed tracking-tight">
+          “Un dato útil también debe mostrar qué no permite concluir.”
+        </blockquote>
+        <p class="mt-5 text-sm leading-6 text-slate-300">
+          Los rangos preliminares no sustituyen una ficha técnica. Una búsqueda sin coincidencia en
+          INVIMA no se interpreta como prueba de ausencia.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <p class="section-eyebrow">Tecnología</p>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-[#0B1736] sm:text-4xl">
+            Una arquitectura por responsabilidades
+          </h2>
+          <p class="mt-5 leading-7 text-slate-600">
+            El stack tecnológico previsto separa el procesamiento científico de la consulta y la
+            gestión de acceso.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <article class="technology-card">
+            <span>Interfaz</span>
+            <h3>Angular · Tailwind CSS · ECharts</h3>
+            <p>Exploración web y visualización interactiva.</p>
+          </article>
+          <article class="technology-card">
+            <span>API</span>
+            <h3>FastAPI · Pydantic</h3>
+            <p>Consulta de resultados validados y gestión de acceso.</p>
+          </article>
+          <article class="technology-card">
+            <span>Identidad</span>
+            <h3>PostgreSQL · SQLAlchemy</h3>
+            <p>Usuarios, roles y sesiones; no almacena importaciones.</p>
+          </article>
+          <article class="technology-card">
+            <span>Procesamiento</span>
+            <h3>Google Colab · Google Drive</h3>
+            <p>Procesamiento científico y sincronización manual de resultados.</p>
+          </article>
+        </div>
+      </div>
+      <p class="mt-6 text-xs leading-5 text-slate-500">
+        La integración y varias capacidades están en desarrollo por fases; esta descripción refleja
+        la arquitectura prevista, no implica que todos sus componentes estén operativos.
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[#f4f7fb] py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+      <div class="team-card">
+        <div>
+          <p class="section-eyebrow">Equipo</p>
+          <h2 class="mt-3 text-2xl font-semibold tracking-tight text-[#0B1736]">
+            Desarrollo del proyecto
+          </h2>
+          <p class="mt-3 max-w-2xl leading-7 text-slate-600">
+            La información de integrantes, roles e instituciones se publicará cuando sea confirmada
+            por los responsables del proyecto.
+          </p>
+        </div>
+        <span class="team-status">Información pendiente de definir</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-14 sm:py-16">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 sm:px-8 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight text-[#0B1736]">
+          Conoce la plataforma
+        </h2>
+        <p class="mt-2 text-slate-600">Consulta el propósito y los criterios de BioPrice BI.</p>
+      </div>
+      <a
+        class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#0B1736] px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        routerLink="/"
+        fragment="inicio"
+      >
+        Volver al inicio
+        <svg lucideArrowRight class="h-4 w-4" aria-hidden="true"></svg>
+      </a>
+    </div>
+  </section>
+</main>
+
+<app-site-footer />

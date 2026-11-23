@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+.about-hero {
+  background:
+    radial-gradient(ellipse at 85% 0%, rgb(37 99 235 / 8%), transparent 35rem),
+    #f8fafc;
+}
+
+.section-eyebrow {
+  color: #0b9f94;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.purpose-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  min-height: 19rem;
+  padding: 1.5rem;
+}
+
+.purpose-icon {
+  align-items: center;
+  background: #eff6ff;
+  border-radius: 0.85rem;
+  color: #1d4ed8;
+  display: inline-flex;
+  height: 2.75rem;
+  justify-content: center;
+  width: 2.75rem;
+}
+
+.purpose-card h2 {
+  color: #0b1736;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+.purpose-card p,
+.purpose-card li {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+
+.purpose-card ul {
+  list-style: disc;
+  padding-left: 1.1rem;
+}
+
+.purpose-card li + li {
+  margin-top: 0.4rem;
+}
+
+.technology-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.technology-card span {
+  color: #0b9f94;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.technology-card h3 {
+  color: #0b1736;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 0.65rem;
+}
+
+.technology-card p {
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-top: 0.4rem;
+}
+
+.team-card {
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.team-status {
+  background: #f1f5f9;
+  border-radius: 9999px;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.65rem 0.9rem;
+  white-space: normal;
+}
+
+@media (min-width: 640px) {
+  .team-card {
+    flex-direction: row;
+    padding: 2rem;
+  }
+}

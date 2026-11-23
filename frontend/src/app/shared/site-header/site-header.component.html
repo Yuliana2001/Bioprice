@@ -1,0 +1,115 @@
+<a
+  class="sr-only fixed left-4 top-4 z-[60] rounded-lg bg-white px-4 py-3 font-semibold text-slate-950 shadow-lg focus:not-sr-only"
+  href="#contenido"
+>
+  Saltar al contenido
+</a>
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
+  <div class="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+    <a
+      class="group inline-flex items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+      routerLink="/"
+      fragment="inicio"
+      aria-label="BioPrice BI, ir al inicio"
+      (click)="closeMenu()"
+    >
+      <span
+        class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0B1736] text-[#48d4c6] shadow-sm transition-transform group-hover:scale-105"
+      >
+        <svg lucideActivity class="h-5 w-5" aria-hidden="true"></svg>
+      </span>
+      <span class="text-lg font-bold tracking-tight text-[#0B1736]">
+        BioPrice <span class="text-[#00a99b]">BI</span>
+      </span>
+    </a>
+
+    <nav aria-label="Navegación principal" class="hidden items-center gap-8 md:flex">
+      <a
+        class="nav-link"
+        routerLink="/"
+        fragment="inicio"
+        routerLinkActive="nav-link-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+      <a class="nav-link" routerLink="/" fragment="plataforma">Plataforma</a>
+      <a class="nav-link" routerLink="/" fragment="metodologia">Metodología</a>
+      <a
+        class="nav-link"
+        routerLink="/quienes-somos"
+        routerLinkActive="nav-link-active"
+        ariaCurrentWhenActive="page"
+      >
+        Quiénes somos
+      </a>
+    </nav>
+
+    <div class="hidden items-center gap-3 md:flex">
+        <a
+          class="rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold text-[#0B1736] transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          routerLink="/registro"
+        >
+          Registrarse
+        </a>
+      <a
+        class="inline-flex items-center gap-2 rounded-xl bg-[#0B1736] px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        routerLink="/ingresar"
+      >
+        Ingresar
+        <svg lucideArrowUpRight class="h-4 w-4" aria-hidden="true"></svg>
+      </a>
+    </div>
+
+    <button
+      class="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 text-slate-800 transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 md:hidden"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-navigation"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggleMenu()"
+    >
+      @if (menuOpen()) {
+        <svg lucideX class="h-5 w-5" aria-hidden="true"></svg>
+      } @else {
+        <svg lucideMenu class="h-5 w-5" aria-hidden="true"></svg>
+      }
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav
+      id="mobile-navigation"
+      aria-label="Navegación móvil"
+      class="border-t border-slate-200 bg-white px-5 py-4 shadow-lg md:hidden"
+    >
+      <div class="mx-auto flex max-w-7xl flex-col gap-1">
+        <a class="mobile-nav-link" routerLink="/" fragment="inicio" (click)="closeMenu()">Inicio</a>
+        <a class="mobile-nav-link" routerLink="/" fragment="plataforma" (click)="closeMenu()">
+          Plataforma
+        </a>
+        <a class="mobile-nav-link" routerLink="/" fragment="metodologia" (click)="closeMenu()">
+          Metodología
+        </a>
+        <a class="mobile-nav-link" routerLink="/quienes-somos" (click)="closeMenu()">
+          Quiénes somos
+        </a>
+        <a
+          class="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-[#0B1736] px-4 py-3 text-sm font-semibold text-white"
+          routerLink="/ingresar"
+          (click)="closeMenu()"
+        >
+          Ingresar
+          <svg lucideArrowUpRight class="h-4 w-4" aria-hidden="true"></svg>
+        </a>
+          <a
+            class="mt-2 inline-flex items-center justify-center rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold text-[#0B1736]"
+            routerLink="/registro"
+            (click)="closeMenu()"
+          >
+            Registrarse
+          </a>
+      </div>
+    </nav>
+  }
+</header>
