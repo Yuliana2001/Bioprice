@@ -78,6 +78,10 @@ errores de entrega se registran sin incluir correo, token, contraseña ni conten
 - `POST /api/admin/users/{id}/revoke-sessions`: revoca sesiones, solo `ADMIN`.
 - `GET /api/admin/audit`: eventos paginados, solo `ADMIN`.
 
+Si el cierre de sesión responde `401` porque la sesión ya no es válida, la
+interfaz vuelve a la pantalla de ingreso y lo informa. Otros errores de cierre
+se muestran sin afirmar que la sesión se haya cerrado.
+
 Los cambios administrativos, los inicios/cierres de sesión y los cambios de contraseña generan
 eventos de auditoría sin registrar credenciales ni tokens. Los intentos fallidos limitan por IP y
 correo dentro del proceso, y la cuenta se bloquea temporalmente después de cinco contraseñas

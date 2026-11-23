@@ -167,6 +167,49 @@ describe('Dashboard navigation', () => {
     expect(harness.routeNativeElement?.textContent).toContain('No se pudieron cargar los resultados');
   });
 
+  it('returns to login when logout finds that the session has already expired', async () => {
+    setAuthenticated();
+    auth.logout.and.callFake(() => {
+      auth.currentUser.set(null);
+      auth.loadCurrentUser.and.returnValue(of(null));
+      return throwError(() => new HttpErrorResponse({ status: 401, url: '/api/auth/logout' }));
+    });
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/app/dashboard', DashboardPage);
+    (harness.routeNativeElement?.querySelector('button') as HTMLButtonElement).click();
+    await harness.fixture.whenStable();
+    harness.detectChanges();
+
+    expect(TestBed.inject(Router).url).toBe('/ingresar?sesion=no-valida');
+    expect(harness.routeNativeElement?.textContent).toContain('Tu sesión ya no era válida');
+  });
+
+  it('returns to login after a successful logout', async () => {
+    setAuthenticated();
+    auth.logout.and.callFake(() => {
+      auth.currentUser.set(null);
+      auth.loadCurrentUser.and.returnValue(of(null));
+      return of({ message: 'Sesión cerrada.' });
+    });
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/app/dashboard', DashboardPage);
+    (harness.routeNativeElement?.querySelector('button') as HTMLButtonElement).click();
+    await harness.fixture.whenStable();
+    expect(TestBed.inject(Router).url).toBe('/ingresar');
+  });
+
+  it('shows an error and stays on the dashboard when logout fails', async () => {
+    setAuthenticated();
+    auth.logout.and.returnValue(throwError(() => new HttpErrorResponse({ status: 503 })));
+    const harness = await RouterTestingHarness.create();
+    await harness.navigateByUrl('/app/dashboard', DashboardPage);
+    (harness.routeNativeElement?.querySelector('button') as HTMLButtonElement).click();
+    harness.detectChanges();
+
+    expect(TestBed.inject(Router).url).toBe('/app/dashboard');
+    expect(harness.routeNativeElement?.textContent).toContain('No se pudo cerrar la sesión');
+  });
+
   it('shows available charts even when SECOP is unavailable', async () => {
     setAuthenticated();
     dashboard.getAnalyticsChart.and.callFake((id) =>

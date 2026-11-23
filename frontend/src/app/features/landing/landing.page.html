@@ -218,39 +218,25 @@
         </p>
       </div>
 
-      <div class="mt-12 grid gap-5 md:grid-cols-3">
-        <article class="process-card">
-          <span class="process-number">01</span>
+      <div class="process-carousel mt-12 mx-auto max-w-3xl" role="region" aria-roledescription="carrusel" aria-label="Etapas del flujo de trabajo">
+        <article class="process-card" role="group" aria-roledescription="diapositiva"
+          [attr.aria-label]="(activeStep() + 1) + ' de ' + steps.length" aria-live="polite">
+          <span class="process-number">0{{ activeStep() + 1 }} / 0{{ steps.length }}</span>
           <span class="process-icon">
-            <svg lucideDatabase class="h-5 w-5" aria-hidden="true"></svg>
+            @switch (activeStep()) {
+              @case (0) { <svg lucideDatabase class="h-5 w-5" aria-hidden="true"></svg> }
+              @case (1) { <svg lucideShieldCheck class="h-5 w-5" aria-hidden="true"></svg> }
+              @case (2) { <svg lucideChartColumn class="h-5 w-5" aria-hidden="true"></svg> }
+            }
           </span>
-          <h3>Procesamiento especializado</h3>
-          <p>
-            Los datos se clasifican y analizan en el entorno científico definido para el proyecto.
-          </p>
+          <h3>{{ steps[activeStep()].title }}</h3>
+          <p>{{ steps[activeStep()].description }}</p>
         </article>
-        <article class="process-card">
-          <span class="process-number">02</span>
-          <span class="process-icon">
-            <svg lucideShieldCheck class="h-5 w-5" aria-hidden="true"></svg>
-          </span>
-          <h3>Resultados revisados</h3>
-          <p>
-            Los archivos exportados se sincronizan manualmente y se validan antes de publicarse en
-            la API.
-          </p>
-        </article>
-        <article class="process-card">
-          <span class="process-number">03</span>
-          <span class="process-icon">
-            <svg lucideChartColumn class="h-5 w-5" aria-hidden="true"></svg>
-          </span>
-          <h3>Exploración informada</h3>
-          <p>
-            Los indicadores se consultan desde una interfaz con filtros y advertencias
-            metodológicas.
-          </p>
-        </article>
+        <div class="carousel-controls">
+          <button type="button" class="carousel-button" aria-label="Etapa anterior" (click)="changeStep(-1)">←</button>
+          <span aria-hidden="true">{{ activeStep() + 1 }} / {{ steps.length }}</span>
+          <button type="button" class="carousel-button" aria-label="Etapa siguiente" (click)="changeStep(1)">→</button>
+        </div>
       </div>
     </div>
   </section>

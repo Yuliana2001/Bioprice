@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
   LucideActivity,
@@ -35,6 +35,26 @@ import { SiteHeaderComponent } from '../../shared/site-header/site-header.compon
   styleUrl: './landing.page.css',
 })
 export class LandingPage {
+  protected readonly activeStep = signal(0);
+  protected readonly steps = [
+    {
+      title: 'Procesamiento especializado',
+      description: 'Los datos se clasifican y analizan en el entorno científico definido para el proyecto.',
+    },
+    {
+      title: 'Resultados revisados',
+      description: 'Los archivos exportados se sincronizan manualmente y se validan antes de publicarse en la API.',
+    },
+    {
+      title: 'Exploración informada',
+      description: 'Los indicadores se consultan desde una interfaz con filtros y advertencias metodológicas.',
+    },
+  ];
+
+  protected changeStep(offset: number): void {
+    this.activeStep.update((index) => (index + offset + this.steps.length) % this.steps.length);
+  }
+
   protected readonly families = [
     'Ecógrafos',
     'Aceleradores lineales',

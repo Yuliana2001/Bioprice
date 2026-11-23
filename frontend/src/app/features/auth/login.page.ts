@@ -170,6 +170,9 @@ export class LoginPage {
         'No se pudo validar la sesión. Inténtalo de nuevo cuando el servicio esté disponible.',
       );
     }
+    if (this.route.snapshot.queryParamMap.get('sesion') === 'no-valida') {
+      this.successMessage.set('Tu sesión ya no era válida. Puedes iniciar sesión nuevamente.');
+    }
     this.auth.loadCurrentUser().subscribe({
       next: (user) => {
         if (user) {

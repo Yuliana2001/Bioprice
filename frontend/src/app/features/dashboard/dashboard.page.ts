@@ -239,7 +239,13 @@ export class DashboardPage implements OnInit {
     this.actionError.set(null);
     this.auth.logout().subscribe({
       next: () => void this.router.navigateByUrl('/ingresar'),
-      error: () => this.actionError.set('No se pudo cerrar la sesión. Inténtalo nuevamente.'),
+      error: (error: unknown) => {
+        if (error instanceof HttpErrorResponse && error.status === 401 && error.url?.endsWith('/api/auth/logout')) {
+          void this.router.navigate(['/ingresar'], { queryParams: { sesion: 'no-valida' } });
+        } else {
+          this.actionError.set('No se pudo cerrar la sesión. Inténtalo nuevamente.');
+        }
+      },
     });
   }
 }

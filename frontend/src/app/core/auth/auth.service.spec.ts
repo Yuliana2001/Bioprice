@@ -65,4 +65,41 @@ describe('AuthService', () => {
 
     expect(responseUser).toEqual(user);
   });
+
+  it('clears local session state on logout when the server reports an expired session', () => {
+    service.currentUser.set(user);
+    let status: number | undefined;
+    service.logout().subscribe({ error: (error) => { status = error.status; } });
+    http.expectOne('/api/auth/csrf').flush({ csrf_token: 'csrf-token' });
+    http.expectOne('/api/auth/logout')
+      .flush({ detail: 'Sesión expirada' }, { status: 401, statusText: 'Unauthorized' });
+
+    expect(status).toBe(401);
+    expect(service.currentUser()).toBeNull();
+  });
+
+  it('clears local session state after a successful logout', () => {
+    service.currentUser.set(user);
+    let message: string | undefined;
+    service.logout().subscribe((response) => { message = response.message; });
+    http.expectOne('/api/auth/csrf').flush({ csrf_token: 'csrf-token' });
+    const request = http.expectOne('/api/auth/logout');
+    expect(request.request.headers.get('X-CSRF-Token')).toBe('csrf-token');
+    request.flush({ message: 'Sesión cerrada.' });
+
+    expect(message).toBe('Sesión cerrada.');
+    expect(service.currentUser()).toBeNull();
+  });
+
+  it('preserves local session state when logout fails for another reason', () => {
+    service.currentUser.set(user);
+    let status: number | undefined;
+    service.logout().subscribe({ error: (error) => { status = error.status; } });
+    http.expectOne('/api/auth/csrf').flush({ csrf_token: 'csrf-token' });
+    http.expectOne('/api/auth/logout')
+      .flush({ detail: 'No disponible' }, { status: 503, statusText: 'Unavailable' });
+
+    expect(status).toBe(503);
+    expect(service.currentUser()).toEqual(user);
+  });
 });

@@ -73,12 +73,41 @@
 }
 
 .process-card {
-  background: white;
+  background: linear-gradient(135deg, #f1fbf9, #fff 60%, #eef6ff);
   border: 1px solid #e2e8f0;
   border-radius: 1.25rem;
   min-height: 15rem;
   padding: 1.5rem;
   position: relative;
+}
+
+.carousel-controls {
+  align-items: center;
+  color: #475569;
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: 700;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.carousel-button {
+  background: #0b1736;
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1.25rem;
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.carousel-button:hover {
+  background: #16467b;
+}
+
+.carousel-button:focus-visible {
+  outline: 2px solid #0b9f94;
+  outline-offset: 3px;
 }
 
 .process-number {

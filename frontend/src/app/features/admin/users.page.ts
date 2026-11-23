@@ -388,7 +388,13 @@ export class AdminUsersPage implements OnInit {
   protected signOut(): void {
     this.auth.logout().subscribe({
       next: () => void this.router.navigateByUrl('/ingresar'),
-      error: (error: unknown) => this.errorMessage.set(this.describeError(error)),
+      error: (error: unknown) => {
+        if (error instanceof HttpErrorResponse && error.status === 401 && error.url?.endsWith('/api/auth/logout')) {
+          void this.router.navigate(['/ingresar'], { queryParams: { sesion: 'no-valida' } });
+        } else {
+          this.errorMessage.set(this.describeError(error));
+        }
+      },
     });
   }
 

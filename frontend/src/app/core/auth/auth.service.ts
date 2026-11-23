@@ -111,6 +111,15 @@ export class AuthService {
         '/api/auth/logout',
         {},
         { headers: this.csrfHeaders(token) },
+      ).pipe(
+        tap({
+          error: (error: unknown) => {
+            if (error instanceof HttpErrorResponse && error.status === 401) {
+              this.currentUser.set(null);
+              this.csrfToken = null;
+            }
+          },
+        }),
       ),
     ).pipe(
       tap(() => {
